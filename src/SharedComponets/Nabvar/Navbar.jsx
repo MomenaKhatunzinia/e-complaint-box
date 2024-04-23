@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   const link = <>
   <li><Link>View Complain</Link></li>
+  <li ><Link to={'/addComplain'}>Add Complain</Link></li>
   </>
     return (
         <div className="navbar bg-base-100">
