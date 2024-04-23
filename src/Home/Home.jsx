@@ -5,7 +5,7 @@ const Home = () => {
     return (
 
         <div >
-            <div className="h-1/4">
+            <div className="w-full">
             <Banner></Banner>
             </div>
         </div>

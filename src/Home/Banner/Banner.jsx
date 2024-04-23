@@ -1,34 +1,33 @@
-
 import AwesomeSlider from 'react-awesome-slider';
-import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
-
-// const slider = (
-//   <AwesomeSlider>
-//     <div>1</div>
-//     <div>2</div>
-//     <div>3</div>
-//     <div>4</div>
-//   </AwesomeSlider>
-// );
+import 'react-awesome-slider/dist/styles.css';
 
 const Banner = () => {
-    return (
-        <div>
-            {/* <div className="hero min-h-screen" style={{backgroundImage: 'url(https://i.ibb.co/4VdfsXw/download-1.jpg)'}}>
-  <div className="hero-overlay bg-opacity-60"></div>
-  <div className="hero-content text-center text-neutral-content">
-    <div className="max-w-md">
-      <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-      <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-      <button className="btn btn-primary">Get Started</button>
+  return (
+    <div className='relative'>
+      <AwesomeSlider
+        media={[
+          {
+            source: '/public/Images/download (1).jpeg',
+          },
+          {
+            source: '/public/Images/569009aa-c00f-462f-9e1a-08accaf85e9d.jpg',
+          },
+          {
+            source: '/public/Images/istockphoto-1145037784-612x612.jpg',
+          },
+          {
+            source: '/public/Images/UndergroundWaterLine-Broken-717c87cffc3c4903988fe0dfaca72809.jpg',
+          },
+        ]}
+      />
+    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-black text-3xl font-bold"
+        style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>
+
+  rfdfgs
+
     </div>
-  </div>
-</div> */}
-<AwesomeSlider animation="cubeAnimation">
-    <div data-src="/public/Images/download (1).jpeg" />
-  </AwesomeSlider>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default Banner;
