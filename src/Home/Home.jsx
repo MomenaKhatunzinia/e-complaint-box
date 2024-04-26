@@ -1,12 +1,20 @@
+
+import ViewComplain from "../AddComplain/ViewComplain/ViewComplain";
+
 import Banner from "./Banner/Banner";
 
 
 const Home = () => {
     return (
 
-        <div className=" bg-blue-950" >
-            <div className="w-full h-1/2 ">
-            <Banner></Banner>
+        <div>
+          
+           <div className=" ">
+           <Banner></Banner>
+           </div>
+           
+            <div className="mt-64">
+            <ViewComplain></ViewComplain>
             </div>
         </div>
     );
