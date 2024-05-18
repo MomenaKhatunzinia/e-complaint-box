@@ -3,7 +3,7 @@ import {  BsBoxArrowInDown } from "@react-icons/all-files/bs/BsBoxArrowInDown";
 import HomeIcon from "../../Pages/HomeIcon/HomeIcon";
 const Navbar = () => {
   const link = <>
-  <li><Link to={'/viewComplain'}>View My Complain</Link></li>
+  <li><Link to={'/myComplain'}> My Complain</Link></li>
   <li ><Link to={'/addComplain'}>Add Complain</Link></li>
   </>
     return (

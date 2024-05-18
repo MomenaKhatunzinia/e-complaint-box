@@ -26,14 +26,18 @@ const Banner = () => {
         </AutoplaySlider>
       </div>
      
-      <div className='absolute bottom-5 w-2/4 h-1/4 ml-64 '>
+      <div className='absolute lg:bottom-5 w-2/4 h-1/4 lg:ml-64 
+      bottom-3
+      ml-32
+     
+      '>
         <Tilt className='bg-white
         opacity-70
         rounded-md
         shadow-md
         h-full w-full flex justify-center items-center'>
           <div className=''>
-            <h1 className='text-5xl text-black font-bold'>React Parallax Tilt</h1>
+            <h1 className='lg:text-5xl text-black font-bold'>Fill your complain here</h1>
           </div>
         </Tilt>
       </div>
