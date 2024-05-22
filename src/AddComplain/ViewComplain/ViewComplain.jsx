@@ -5,19 +5,30 @@ import { useEffect, useState } from "react";
 
 
 const ViewComplain = () => {
-    const [loadData, setLoadData] = useState(null);
+    // const [loadData, setLoadData] = useState(null);
+    const [publicComplains, setPublicComplains] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:5000/Complains')
-          .then((res) => res.json())
-          .then((data) => {
-            setLoadData(data);
-          })
-          .catch((error) => {
-            console.error( error);
-          });
-      }, []);
+      fetch('http://localhost:5000/Complains')
+        .then((res) => res.json())
+        .then((data) => {
+          if (data) {
+            const publicData = data.filter((item) => item.level.toLowerCase() === "public");
+            setPublicComplains(publicData);
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }, []);
   
+    // useEffect(() => {
+    //   if (loadData) {
+    //     const publicData = loadData.filter((item) => item.level.toLowerCase() === "public");
+    //     setPublicComplains(publicData);
+    //   }
+    // }, [loadData]);
+
     return (
         <div className="grid 
         grid-cols-1
@@ -26,7 +37,7 @@ const ViewComplain = () => {
         lg:grid-cols-2 gap-3">
         
           {
-                loadData?.map(a=>
+                publicComplains?.map(a=>
                    <ShowComplain
                    key={a._id}
                    a={a}

@@ -5,6 +5,10 @@ import Root from "../src/Root/Root";
 import AddComplain from "../src/AddComplain/AddComplain";
 
 import MyComplain from "../src/MyComplain/MyComplain";
+import Register from "../src/Register/Register";
+import Login from "../src/Login/Login";
+import Profile from "../src/Profile/Profile";
+import Dashboard from "../src/Dashboard/Dashboard";
 
 export const router = createBrowserRouter([
     {
@@ -22,8 +26,32 @@ export const router = createBrowserRouter([
         {
           path: "/myComplain",
           element:<MyComplain></MyComplain>,
-          loader:()=>fetch('http://localhost:5000/Complains')
+         
         },
+        {
+          path: "/register",
+          element:<Register></Register>,
+
+        },
+        {
+          path: "/login",
+          element:<Login></Login>
+        },
+        {
+          path: "/profile",
+          element:<Profile></Profile>
+        },
+        
+
       ],
     },
+
+    {
+      path:'dashboard',
+      element:<Dashboard></Dashboard>,
+      children:
+      [
+
+      ]
+    }
 ]);

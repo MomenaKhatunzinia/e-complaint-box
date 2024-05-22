@@ -1,10 +1,15 @@
 import { Link } from "react-router-dom";
 import {  BsBoxArrowInDown } from "@react-icons/all-files/bs/BsBoxArrowInDown";
 import HomeIcon from "../../Pages/HomeIcon/HomeIcon";
+import SignOut from "../../signOut/SignOut";
+
 const Navbar = () => {
   const link = <>
   <li><Link to={'/myComplain'}> My Complain</Link></li>
   <li ><Link to={'/addComplain'}>Add Complain</Link></li>
+  <li ><Link to={'/register'}>Register</Link></li>
+  <li ><Link to={'/login'}>Login</Link></li>
+  <li ><Link to={'/profile'}>Profile</Link></li>
   </>
     return (
       <div className="navbar bg-base-100">
@@ -26,7 +31,9 @@ const Navbar = () => {
           {link}
         </ul>
       </div>
+  
       <div className="navbar-end">
+        <SignOut></SignOut>
         <HomeIcon></HomeIcon>
       </div>
     </div>
