@@ -13,7 +13,7 @@ const ViewComplain = () => {
         .then((res) => res.json())
         .then((data) => {
           if (data) {
-            const publicData = data.filter((item) => item.level.toLowerCase() === "public");
+            const publicData = data.filter((item) => item.level === "Public");
             setPublicComplains(publicData);
           }
         })

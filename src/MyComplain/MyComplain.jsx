@@ -1,5 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import ShowMyComplain from "./ShowMyComplain";
+
 
 
 const MyComplain = () => {
@@ -8,7 +10,7 @@ const MyComplain = () => {
   const email = user?.email;
   useEffect(() => {
     if (email) {
-      fetch(`http://localhost:5000/Complains?email=${email}`)
+      fetch(`http://localhost:5000/complains/${email}`)
         .then((res) => res.json())
         .then((data) => {
           setMy(data);
@@ -20,11 +22,26 @@ const MyComplain = () => {
     }
   }, [email]);
   
-  
+  console.log(my)
     return (
-        <div>
-            
-        </div>
+      <div className="grid 
+      grid-cols-1
+      md:grid-cols-1
+      md: px-44
+      lg:grid-cols-2 gap-3">
+      
+        {
+              my?.map(a=>
+                <ShowMyComplain
+                key={a._id}
+                a={a}
+                >
+
+                </ShowMyComplain>
+                  )
+          }
+     
+      </div>
     );
 };
 
