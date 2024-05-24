@@ -23,7 +23,7 @@ const SignOut = () => {
      gap-2 mb-6" >
  
  <div className="avatar">
-  <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+  <div className="w-11 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
 <img
 
  src={user?.photoURL}></img> 

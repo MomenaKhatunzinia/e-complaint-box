@@ -9,6 +9,7 @@ import Register from "../src/Register/Register";
 import Login from "../src/Login/Login";
 import Profile from "../src/Profile/Profile";
 import Dashboard from "../src/Dashboard/Dashboard";
+import Update from "../src/Update/Update";
 
 export const router = createBrowserRouter([
     {
@@ -37,11 +38,17 @@ export const router = createBrowserRouter([
           path: "/login",
           element:<Login></Login>
         },
+        
         {
           path: "/profile",
           element:<Profile></Profile>
         },
-        
+        {
+          path: "/update/:_id",
+          element:<Update></Update>,
+          loader:({params}) =>fetch(`http://localhost:5000/Updatecomplains/${params._id}`)
+
+        },
 
       ],
     },

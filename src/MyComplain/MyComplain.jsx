@@ -21,7 +21,12 @@ const MyComplain = () => {
         });
     }
   }, [email]);
-  
+  const handleDelete = (id) => {
+    setMy((prevComplaints) =>
+      prevComplaints.filter((complaint) => complaint._id !== id)
+    );
+  };
+
   console.log(my)
     return (
       <div className="grid 
@@ -35,6 +40,7 @@ const MyComplain = () => {
                 <ShowMyComplain
                 key={a._id}
                 a={a}
+                onDelete={handleDelete}
                 >
 
                 </ShowMyComplain>

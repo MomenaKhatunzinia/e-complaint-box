@@ -2,6 +2,7 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 
 const AddComplain = () => {
+ 
   const [level, setLevel] = useState(""); 
   const [file, setFile] = useState(null);
   const [formData, setFormData] = useState({
@@ -33,7 +34,7 @@ const AddComplain = () => {
     const formData = new FormData(form);
 
     formData.append("level", level);
-
+   
     if (file) {
       formData.append("file", file);
     }

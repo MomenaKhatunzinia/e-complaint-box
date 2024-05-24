@@ -1,90 +1,89 @@
-
-
+import axios from 'axios';
+import { useState } from "react";
 import { AiOutlineLike } from "@react-icons/all-files/ai/AiOutlineLike";
 import { AiOutlineDislike } from "@react-icons/all-files/ai/AiOutlineDislike";
 
-
-
 const ShowComplain = ({ a }) => {
+  const { _id, address, description, file, upVote: initialUpVote, downVote: initialDownVote } = a;
 
-  //LIke
-  const handelUp =()=>
-    {
-      
+  const [upVote, setUpVote] = useState(parseInt(initialUpVote, 10) || 0);
+  const [downVote, setDownVote] = useState(parseInt(initialDownVote, 10) || 0);
+  const [userAction, setUserAction] = useState(null);
+
+  const handleUp = async () => {
+    try {
+      if (userAction === 'up') {
+        setUpVote(prevUpVote => prevUpVote - 1);
+        setUserAction(null);
+        await axios.put(`http://localhost:5000/complain/upvote/${_id}`, { increment: -1 });
+      } else {
+        setUpVote(prevUpVote => prevUpVote + 1);
+        if (userAction === 'down') {
+          setDownVote(prevDownVote => prevDownVote - 1);
+        }
+        setUserAction('up');
+        await axios.put(`http://localhost:5000/complain/upvote/${_id}`, { increment: 1 });
+        if (userAction === 'down') {
+          await axios.put(`http://localhost:5000/complain/downvote/${_id}`, { increment: -1 });
+        }
+      }
+    } catch (error) {
+      console.error("Error updating upvote count:", error);
     }
-
-  const { address, description, file } = a;
-
-  
-
-  console.log("File data:", file);
-
-  const bufferToBase64 = (buffer) => {
-    let binary = '';
-    const bytes = new Uint8Array(buffer);
-    const len = bytes.byteLength;
-    for (let i = 0; i < len; i++) {
-      binary += String.fromCharCode(bytes[i]);
-    }
-    return window.btoa(binary);
   };
 
-  const createFileUrl = (file) => {
-    if (!file || !file.buffer || !file.mimetype) {
-      console.error("Invalid file data:", file);
-      return null;
+  const handleDown = async () => {
+    try {
+      if (userAction === 'down') {
+        setDownVote(prevDownVote => prevDownVote - 1);
+        setUserAction(null);
+        await axios.put(`http://localhost:5000/complain/downvote/${_id}`, { increment: -1 });
+      } else {
+        setDownVote(prevDownVote => prevDownVote + 1);
+        if (userAction === 'up') {
+          setUpVote(prevUpVote => prevUpVote - 1);
+        }
+        setUserAction('down');
+        await axios.put(`http://localhost:5000/complain/downvote/${_id}`, { increment: 1 });
+        if (userAction === 'up') {
+          await axios.put(`http://localhost:5000/complain/upvote/${_id}`, { increment: -1 });
+        }
+      }
+    } catch (error) {
+      console.error("Error updating downvote count:", error);
     }
-
-    const base64String = bufferToBase64(file.buffer.data);
-    console.log("Base64 string:", base64String);
-
-    if (!base64String) {
-      console.error("Failed to convert buffer to Base64:", file);
-      return null;
-    }
-
-    return `data:${file.mimetype};base64,${base64String}`;
   };
 
-  const fileUrl = createFileUrl(file);
+ 
 
-  console.log("File URL:", fileUrl);
+
+
 
   return (
     <div>
       <div className="card w-96 bg-base-100 shadow-xl">
-        {fileUrl && file.mimetype.startsWith('image/') && (
-          <figure>
-            <img src={fileUrl} alt="Uploaded content" />
-          </figure>
-        )}
-        {fileUrl && file.mimetype.startsWith('video/') && (
-          <figure>
-            <video controls>
-              <source src={fileUrl} type={file.mimetype} />
-              Your browser does not support the video tag.
-            </video>
-          </figure>
-        )}
+      
+      <figure>
+          <img src={file?.imageUri} alt="Not found" />
+        </figure>
         <div className="card-body">
           <h2 className="card-title">{address}</h2>
           <p>{description}</p>
           <div className="card-actions justify-end">
-            <div className="badge badge-outline
-            gap-5
-            ">
-              <div
-
-              >
-              <button
-              onClick={handelUp}
-              ><AiOutlineLike /></button>
+            <div className="badge badge-outline gap-5">
+              <div>
+                <h1>{upVote}</h1>
+                <button onClick={handleUp}>
+                  <AiOutlineLike />
+                </button>
               </div>
-            <div>
-            <AiOutlineDislike></AiOutlineDislike>
+              <div>
+                <h1>{downVote}</h1>
+                <button onClick={handleDown}>
+                  <AiOutlineDislike />
+                </button>
+              </div>
             </div>
-            </div>
-            <div className="badge badge-outline">Comment</div>
           </div>
         </div>
       </div>
