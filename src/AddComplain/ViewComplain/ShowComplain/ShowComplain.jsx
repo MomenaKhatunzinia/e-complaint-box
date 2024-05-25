@@ -69,8 +69,8 @@ const ShowComplain = ({ a }) => {
         <div className="card-body">
           <h2 className="card-title">{address}</h2>
           <p>{description}</p>
-          <div className="card-actions justify-end">
-            <div className="badge badge-outline gap-5">
+          <div className="card-actions justify-end ">
+            <div className="badge badge-outline gap-5 h-10 w-32">
               <div>
                 <h1>{upVote}</h1>
                 <button onClick={handleUp}>

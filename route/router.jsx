@@ -10,6 +10,10 @@ import Login from "../src/Login/Login";
 import Profile from "../src/Profile/Profile";
 import Dashboard from "../src/Dashboard/Dashboard";
 import Update from "../src/Update/Update";
+import ComplainLoad from "../src/Dashboard/ComplainShow/ComplainLoad";
+import ComplainDetails from "../src/Dashboard/ComplainDetails/ComplainDetails";
+import AdminPanel from "../src/Dashboard/AdminPanel/AdminPanel";
+import AddAdmin from "../src/Dashboard/AddAdmin/AddAdmin";
 
 export const router = createBrowserRouter([
     {
@@ -58,6 +62,32 @@ export const router = createBrowserRouter([
       element:<Dashboard></Dashboard>,
       children:
       [
+        {
+          path: "/dashboard/complain",
+          element:<ComplainLoad></ComplainLoad>,
+          loader:() =>fetch(`http://localhost:5000/complains`)
+
+        },
+        {
+          path: "/dashboard/complainDetails/:_id",
+          element:<ComplainDetails>
+          </ComplainDetails>,
+          loader:({params}) =>fetch(`http://localhost:5000/Updatecomplains/${params._id}`)
+
+        },
+        {
+          path: "/dashboard/admin",
+          element:<AdminPanel></AdminPanel>,
+          loader:() =>fetch(`http://localhost:5000/admins`)
+         
+
+        },
+        {
+          path: "/dashboard/addAdmin",
+          element:<AddAdmin></AddAdmin>,
+         
+
+        },
 
       ]
     }

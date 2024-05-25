@@ -10,7 +10,7 @@ const Banner = () => {
   return (
     <div className='relative'>
       <div className='opacity-85
-        
+      
       '>
         <AutoplaySlider
           play={true}
@@ -18,8 +18,10 @@ const Banner = () => {
           interval={3000}
         >
           <div
+         className=' lg:max-h-[400px] '
+          data-src="/public/Images/download (1).jpeg" 
           
-          data-src="/public/Images/download (1).jpeg" />
+          />
           <div data-src="/public/Images/569009aa-c00f-462f-9e1a-08accaf85e9d.jpg" />
           <div data-src="/public/Images/istockphoto-1145037784-612x612.jpg" />
           <div data-src="/public/Images/UndergroundWaterLine-Broken-717c87cffc3c4903988fe0dfaca72809.jpg" />

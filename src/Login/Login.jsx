@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 // import { FcGoogle } from "react-icons/fc";
-// import swal from 'sweetalert';
-// import { Link, useLocation, useNavigate } from "react-router-dom";
+
+// import {  useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 
@@ -60,7 +60,7 @@ const Login = () => {
             <div className="hero min-h-screen bg-base-200">
   <div className="hero-content flex-col lg:flex-row-reverse">
     <div className="text-center lg:text-left">
-      <h1 className="text-5xl font-bold">SignIn now!</h1>
+      <h1 className="text-5xl font-bold">Login</h1>
       
     </div>
     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
